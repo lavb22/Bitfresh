@@ -1,0 +1,46 @@
+﻿<Window x:Class="Bittrex_refresh.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bittrex_Refresher_Main"
+        mc:Ignorable="d"
+        Title="Bittrex Refresh Manager" Height="448.437" Width="836.519" Background="AliceBlue" ResizeMode="NoResize">
+    <Grid Margin="0,10,3.4,0" HorizontalAlignment="Right" Width="803" Height="398" VerticalAlignment="Top">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="800*" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="78,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="414" x:Name="ApiKey" Background="White" />
+        <Label Content="{Binding Path=STATUS, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="606,72,0,0" VerticalAlignment="Top" x:Name="StatusLabel" Height="40" Width="176" />
+        <Label Content="Key:" FontWeight="Bold" HorizontalAlignment="Left" Margin="45,20,0,0" VerticalAlignment="Top" Height="26" Width="35" />
+        <Label Content="Secret:" FontWeight="Bold" HorizontalAlignment="Left" Margin="30,68,0,0" VerticalAlignment="Top" Width="58" Height="26" />
+        <PasswordBox HorizontalAlignment="Left" Margin="78,72,0,0" VerticalAlignment="Top" Height="20" Width="414" x:Name="ApiSecret" Background="White" />
+        <Button Content="Connect" FontSize="14" FontWeight="DemiBold" Background="LightBlue"  HorizontalAlignment="Left" Margin="561,20,0,0" VerticalAlignment="Top" Width="158" Click="Button_Click" x:Name="ConnectButton" Height="35" />
+        <ListView HorizontalAlignment="Left" Height="233" Margin="24,127,0,0" VerticalAlignment="Top" Width="753" x:Name="OrdersView" ItemsSource="{Binding Path=OrderList}" Background="WhiteSmoke">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Focusable" Value="false" />
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID Number" DisplayMemberBinding="{Binding ID}" Width="150" />
+                    <GridViewColumn Header="Exchange" DisplayMemberBinding="{Binding EXCHANGE}" Width="100" />
+                    <GridViewColumn Header="Ammount" DisplayMemberBinding="{Binding AMMOUNT}" Width="100" />
+                    <GridViewColumn Header="Type" DisplayMemberBinding="{Binding TYPE}" Width="100" />
+                    <GridViewColumn Header="Status" DisplayMemberBinding="{Binding STATUS}" Width="100" />
+                    <GridViewColumn Header="Created" DisplayMemberBinding="{Binding CREATED}" Width="100" />
+                    <GridViewColumn Header="Age" DisplayMemberBinding="{Binding TIMELEFT}" Width="100" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Content="Status:" FontWeight="Bold" HorizontalAlignment="Left" Margin="559,72,0,0" VerticalAlignment="Top" />
+        <Button Name="confBtn" HorizontalAlignment="Left" Margin="732,23,0,0" VerticalAlignment="Top" Width="35" Height="30" Click="conf_Clik">
+            <StackPanel Height="30" Width="25">
+                <Image Source= "images/gear.png" Height="28" Margin="-6,0,-6.2,0" />
+                <TextBlock><Run Text="Disconnect from Server" /></TextBlock>
+            </StackPanel>
+        </Button>
+    </Grid>
+</Window>
