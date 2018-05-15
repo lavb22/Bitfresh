@@ -9,11 +9,11 @@ Found it here: https://marketplace.visualstudio.com/items?itemName=VisualStudioP
 
 For every 0.2 BTC we will continue development for an extra month. We will be updating this software to work with other exchanges, and to work with Coinigy to send notifications.
 
-# Donations:
+## Donations:
 
 If you want to support our Bitfresh project, please leave a bitcoin donation. We are open to suggestions on improving the software, but need your donations to pay for the development costs.
 
-![alt text](http://url/to/img.png)
+![Image](https://pandoraswallet.com/addressinfo/DonationAddressQR.png)
 
 Donation Address :
 3K4EUesYdcMjhRV45YbWDUEkitGnnfDaVH
