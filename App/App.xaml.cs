@@ -1,10 +1,9 @@
-﻿using Bittrex_refresh;
-using System.Data;
+﻿using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 
-namespace Bittrex_Refresher_Main
+namespace Bitfresh
 {
     /// <summary>
     /// Interaction logic for App.xaml

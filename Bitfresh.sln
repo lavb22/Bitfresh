@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2015
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bittrex_refresh", "App\Bittrex_refresh.csproj", "{7230E778-0637-499C-934E-AB9533825252}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bitfresh", "App\Bitfresh.csproj", "{7230E778-0637-499C-934E-AB9533825252}"
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{337B8E0D-5D9A-4E4F-A9B2-A160859DAD5F}"
 EndProject

@@ -5,8 +5,8 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 
-namespace Bittrex_refresh
-{
+namespace Bitfresh
+{ 
     public class BackupUtility : IDisposable
     {
         private string CurrentPath, Bktarget, apiKeyStore;

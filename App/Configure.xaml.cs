@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Bittrex_refresh
+namespace Bitfresh
 {
     /// <summary>
     /// Interaction logic for Configure.xaml

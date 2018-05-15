@@ -2,9 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
-namespace Bittrex_refresh
+namespace Bitfresh
 {
     public class OrderManager : IDisposable
     {
@@ -24,6 +25,7 @@ namespace Bittrex_refresh
         private statusClass Status;
         private BackupUtility bkp;
         private System.Collections.ObjectModel.ObservableCollection<Order> OrderList;
+        private CancellationTokenSource cancelAwait;
 
         public OrderManager(BittrexBridge bridge, System.Collections.ObjectModel.ObservableCollection<Order> orderList, statusClass status)
         {
@@ -35,6 +37,8 @@ namespace Bittrex_refresh
             fFirstDataRetrieval = fRestoreBackup = fDeleteBackup = false;
             ToBackup = new Stack<OpenOrder>();
             ToErase = new List<string>();
+
+            cancelAwait = new CancellationTokenSource();
 
             bkp = new BackupUtility(Bridge.apiKeyStore);
 
@@ -50,6 +54,9 @@ namespace Bittrex_refresh
 
         private void UpdateGUI()
         {
+            List<string> tempIDs = new List<string>();
+            List<Order> tempData = new List<Order>();
+
             bool fonlyOnce = true;
             while (!fStop)
             {
@@ -73,7 +80,7 @@ namespace Bittrex_refresh
                 {
                     if (bkp.ordersToRestore())
                     {
-                        System.Windows.Application.Current.Dispatcher.Invoke((Action)delegate
+                        System.Windows.Application.Current.Dispatcher.Invoke(delegate
                         {
                             (System.Windows.Application.Current.MainWindow as MainWindow).AskForBackup();
                         });
@@ -86,22 +93,60 @@ namespace Bittrex_refresh
                     fonlyOnce = false;
                 }
 
-                System.Windows.Application.Current.Dispatcher.Invoke((Action)delegate
+                tempData = OrderList.Where(el => !(Bridge.OnHoldOrders.Exists(x => x.OrderUuid == el.ID)||Bridge.ActiveOrders.Exists(x => x.OrderUuid == el.ID))).ToList();
+
+                if (tempData.Any())
                 {
-                    OrderList.Clear();
-                });
+
+                    foreach (Order it in tempData)
+                    {
+                        System.Windows.Application.Current.Dispatcher.Invoke(delegate
+                        {
+                            OrderList.Remove(it);
+                        });
+
+                    }
+
+                }
+
+                tempData = OrderList.Where(el => Bridge.OnHoldOrders.Exists(x => x.OrderUuid == el.ID) || Bridge.ActiveOrders.Exists(x => x.OrderUuid == el.ID)).ToList();
+
+                if (tempData.Any())
+                {
+                    foreach (Order it in tempData)
+                    {
+                        int index = OrderList.IndexOf(it);
+                        OrderList[index].STATUS= Status.getStatusByOrder(it.ID);
+                        OrderList[index].TIMELEFT = (DateTime.UtcNow - it.CREATED).ToString(@"dd\.hh\:mm\:ss");
+                    }
+                }
+
+                foreach (Order it in OrderList)
+                {
+                    tempIDs.Add(it.ID);
+                }
 
                 foreach (OpenOrder it in Bridge.OnHoldOrders)
                 {
-                    System.Windows.Application.Current.Dispatcher.Invoke((Action)delegate
+                    if (tempIDs.Contains(it.OrderUuid))
                     {
-                        OrderList.Add(new Order(it.OrderUuid, it.Exchange, it.QuantityRemaining, it.OrderType, Status.getStatusByOrder(it.OrderUuid), it.Opened, (DateTime.UtcNow - it.Opened).ToString(@"dd\.hh\:mm\:ss")));
-                    });
+                        continue;
+
+                    }
+                            System.Windows.Application.Current.Dispatcher.Invoke(delegate
+                        {
+                            OrderList.Add(new Order(it.OrderUuid, it.Exchange, it.QuantityRemaining, it.OrderType, Status.getStatusByOrder(it.OrderUuid), it.Opened, (DateTime.UtcNow - it.Opened).ToString(@"dd\.hh\:mm\:ss")));
+                        });
                 }
 
                 foreach (OpenOrder it in Bridge.ActiveOrders)
                 {
-                    System.Windows.Application.Current.Dispatcher.Invoke((Action)delegate
+                    if (tempIDs.Contains(it.OrderUuid))
+                    {
+                        continue;
+                    }
+
+                    System.Windows.Application.Current.Dispatcher.Invoke(delegate
                     {
                         if (!Bridge.OnHoldOrders.Exists(x => x.OrderUuid == it.OrderUuid))
                             OrderList.Add(new Order(it.OrderUuid, it.Exchange, it.QuantityRemaining, it.OrderType, Status.getStatusByOrder(it.OrderUuid), it.Opened, (DateTime.UtcNow - it.Opened).ToString(@"dd\.hh\:mm\:ss")));
@@ -145,9 +190,8 @@ namespace Bittrex_refresh
                     bool fNotCancelling = string.IsNullOrEmpty(Bridge.cancelling.Find(x => x == it.OrderUuid));
 
                     TimeSpan time = it.Opened.AddDays(Constants.MaxDays) - DateTime.UtcNow;
-
-                    //@ 15 days try to remake order
-                    if (time < new TimeSpan(Constants.MaxDays - (int)Properties.Settings.Default["age"], 0, 0, 0) && fNotCancelling)
+                    //(int)Properties.Settings.Default["age"]
+                    if (time < new TimeSpan(Constants.MaxDays - 1, 23, 58, 0) && fNotCancelling)
                     {
                         Task TempTask = new Task(() => remakeOrder(it));
                         TaskingList.Add(TempTask);
@@ -156,8 +200,16 @@ namespace Bittrex_refresh
                 }
 
                 Status.STATUS = "Data retrieved";
-                System.Diagnostics.Debug.WriteLine((int)Properties.Settings.Default["frecuency"] * 3600 * 1000);
-                await Task.Delay((int)Properties.Settings.Default["frecuency"] * 3600 * 1000);
+                
+                try
+                {
+                    await Task.Delay((int)Properties.Settings.Default["frecuency"] * 3600 * 1000, cancelAwait.Token);
+                }
+                catch (TaskCanceledException)
+                {
+                    await Task.Delay(10000);
+                }
+
             }
         }
 
@@ -182,7 +234,7 @@ namespace Bittrex_refresh
 
             Status.setStatusByOrder(order.OrderUuid, "Recreating...");
 
-            if (!Bridge.createOrder(order).Result)
+            if (!Bridge.createOrder(order,cancelAwait).Result)
             {
                 Status.setStatusByOrder(order.OrderUuid, "Unknown order");
                 return;

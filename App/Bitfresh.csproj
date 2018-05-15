@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{7230E778-0637-499C-934E-AB9533825252}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Bittrex_refresh</RootNamespace>
-    <AssemblyName>Bittrex_refresh</AssemblyName>
+    <RootNamespace>Bitfresh</RootNamespace>
+    <AssemblyName>Bittfresh</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -233,6 +233,7 @@
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -246,13 +247,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="bittrex_y6J_icon.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="images\gear.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="bittrexn_vgP_icon.ico" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
@@ -270,7 +265,10 @@
     <Resource Include="logo.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\bittrexn.png" />
+    <Resource Include="images\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

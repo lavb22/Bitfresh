@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
 
-namespace Bittrex_refresh
+namespace Bitfresh
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -42,12 +42,12 @@ namespace Bittrex_refresh
             //Initializing for the NotifyIcon
 
             AppNotifyIcon = new System.Windows.Forms.NotifyIcon();
-            AppNotifyIcon.Icon = System.Drawing.Icon.FromHandle(Properties.Resources.bittrexn.GetHicon());
+            AppNotifyIcon.Icon = System.Drawing.Icon.FromHandle(Properties.Resources.logo.GetHicon());
             AppNotifyIcon.Visible = true;
             AppNotifyIcon.DoubleClick += OnDoubleClickNotify;
             AppNotifyIcon.ContextMenu = NotifyMenu;
-            AppNotifyIcon.BalloonTipText = "Bittrex refresher is minimized to system tray";
-            AppNotifyIcon.Text = "Bittrex refresher";
+            AppNotifyIcon.BalloonTipText = "Bitfresh is minimized to system tray";
+            AppNotifyIcon.Text = "Bitfresh";
 
             //Create configuration object
             confWindow = new Configure(ConnectButton, confBtn);
@@ -90,21 +90,7 @@ namespace Bittrex_refresh
 
         protected void MenuItem_Exit(object sender, EventArgs e)
         {
-            if (Manager != null)
-            {
-                if (Manager.CheckifTask())
-                {
-                    AppNotifyIcon.BalloonTipText = "Bittrex refresher is closing. Please wait until running tasks complete.";
-                    AppNotifyIcon.ShowBalloonTip(3000);
-                    this.IsEnabled = false;
-                }
-
-                Manager.Dispose();
-            }
-
-            NotifyMenu.Dispose();
-            AppNotifyIcon.Dispose();
-            Application.Current.Shutdown();
+            System.Threading.Tasks.Task.Run(()=> closingTask());
         }
 
         private void conf_Clik(object sender, RoutedEventArgs e)
@@ -121,14 +107,8 @@ namespace Bittrex_refresh
             {
                 this.ConnectButton.IsEnabled = false;
 
-                Manager.Dispose();
+                System.Threading.Tasks.Task.Run(() => disconnectingTask());
 
-                this.ConnectButton.IsEnabled = true;
-                this.ConnectButton.Content = "Connect";
-                this.ApiKey.IsEnabled = true;
-                this.ApiSecret.IsEnabled = true;
-                ErrorStatus.STATUS = "Waiting...";
-                this.confBtn.IsEnabled = true;
                 return;
             }
 
@@ -152,7 +132,58 @@ namespace Bittrex_refresh
 
             this.ConnectButton.Content = "Disconnect";
             this.ConnectButton.IsEnabled = true;
+
+            
         }
+
+        private void closingTask()
+        {
+            if (Manager != null)
+            {
+                if (Manager.CheckifTask())
+                {
+                    AppNotifyIcon.BalloonTipText = "Bitfresh is closing. Please wait until running tasks complete.";
+                    AppNotifyIcon.ShowBalloonTip(3000);
+                    System.Windows.Application.Current.Dispatcher.Invoke(delegate
+                    {
+                        this.IsEnabled = false;
+                    });
+                }
+
+                Manager.Dispose();
+            }
+
+            NotifyMenu.Dispose();
+            AppNotifyIcon.Dispose();
+
+            System.Windows.Application.Current.Dispatcher.Invoke(delegate
+            {
+                Application.Current.Shutdown();
+            });
+
+        }
+
+        private void disconnectingTask()
+        {
+            System.Windows.Application.Current.Dispatcher.Invoke(delegate
+            {
+                this.ConnectButton.Content = "Disconnecting";
+            });
+
+            Manager.Dispose();
+
+            System.Windows.Application.Current.Dispatcher.Invoke(delegate
+            {
+                ConnectButton.IsEnabled = true;
+                this.ConnectButton.Content = "Connect";
+                this.ApiKey.IsEnabled = true;
+                this.ApiSecret.IsEnabled = true;
+                ErrorStatus.STATUS = "Waiting...";
+                this.confBtn.IsEnabled = true;
+            });
+
+        }
+
 
         public void ShowConnectionError()
         {

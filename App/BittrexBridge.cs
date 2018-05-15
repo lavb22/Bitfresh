@@ -3,7 +3,7 @@ using BittrexSharp.Domain;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Bittrex_refresh
+namespace Bitfresh
 {
     public class BittrexBridge
     {
@@ -92,7 +92,7 @@ namespace Bittrex_refresh
             return true;
         }
 
-        public async Task<bool> createOrder(OpenOrder orderData)
+        public async Task<bool> createOrder(OpenOrder orderData, System.Threading.CancellationTokenSource cancelOrderAwait)
         {
             ResponseWrapper<AcceptedOrder> response;
 
@@ -115,12 +115,12 @@ namespace Bittrex_refresh
             }
             while (!response.Success);
 
-            OpenOrder TempOrder = null;
+            cancelOrderAwait.Cancel();
 
-            while (TempOrder == null)
+            while (!ActiveOrders.Exists(x => x.OrderUuid == response.Result.Uuid))
             {
-                await Task.Delay(1000);
-                TempOrder = ActiveOrders.Find(x => x.OrderUuid == response.Result.Uuid);
+                await Task.Delay(5000);
+                cancelOrderAwait.Cancel();
             }
 
             OnHoldOrders.Remove(orderData);

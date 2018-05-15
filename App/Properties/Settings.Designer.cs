@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Bittrex_refresh.Properties {
+namespace Bitfresh.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
