@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Bittfresh.exe" size="110408">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Bittfresh.exe" size="109056">
       <assemblyIdentity name="Bittfresh" version="1.0.0.2" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>h+FYnPr46IKtwkO8H3gj7vmARTGpxEsXysVLTaKTlOk=</dsig:DigestValue>
+        <dsig:DigestValue>y+1S6qb/Izt9SKSd1EH9ONazt4z1RHG2j18pTzN6Ov4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
