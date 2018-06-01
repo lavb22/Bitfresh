@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>BittrexSharp</id>
+    <version>0.1.1</version>
+    <authors>BittrexSharp</authors>
+    <owners>BittrexSharp</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/Domysee/BittrexSharp/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/Domysee/BittrexSharp</projectUrl>
+    <description>C# Api Wrapper for Bittrex</description>
+    <tags>csharp api bittrex</tags>
+    <repository url="https://github.com/Domysee/BittrexSharp" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Newtonsoft.Json" version="11.0.2" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Users\Luis\source\repos\Bitfresh\BittrexSharp\bin\Debug\netstandard2.0\BittrexSharp.dll" target="lib\netstandard2.0\BittrexSharp.dll" />
+  </files>
+</package>

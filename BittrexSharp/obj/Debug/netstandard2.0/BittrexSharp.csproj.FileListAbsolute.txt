@@ -1,0 +1,8 @@
+C:\Users\Luis\Source\Repos\Bitfresh\BittrexSharp\bin\Debug\netstandard2.0\BittrexSharp.deps.json
+C:\Users\Luis\Source\Repos\Bitfresh\BittrexSharp\bin\Debug\netstandard2.0\BittrexSharp.dll
+C:\Users\Luis\Source\Repos\Bitfresh\BittrexSharp\bin\Debug\netstandard2.0\BittrexSharp.pdb
+C:\Users\Luis\Source\Repos\Bitfresh\BittrexSharp\obj\Debug\netstandard2.0\BittrexSharp.csproj.CoreCompileInputs.cache
+C:\Users\Luis\Source\Repos\Bitfresh\BittrexSharp\obj\Debug\netstandard2.0\BittrexSharp.AssemblyInfoInputs.cache
+C:\Users\Luis\Source\Repos\Bitfresh\BittrexSharp\obj\Debug\netstandard2.0\BittrexSharp.AssemblyInfo.cs
+C:\Users\Luis\Source\Repos\Bitfresh\BittrexSharp\obj\Debug\netstandard2.0\BittrexSharp.dll
+C:\Users\Luis\Source\Repos\Bitfresh\BittrexSharp\obj\Debug\netstandard2.0\BittrexSharp.pdb

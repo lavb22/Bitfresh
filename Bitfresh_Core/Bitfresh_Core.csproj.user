@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MvcRazorCompileOnPublish>false</MvcRazorCompileOnPublish>
+    <RevDeBugCompilerPath>C:\USERS\LUIS\APPDATA\LOCAL\MICROSOFT\VISUALSTUDIO\15.0_CE2DBD57\EXTENSIONS\hhrsyek5.3pu\tmcc\</RevDeBugCompilerPath>
+    <CustomAfterMicrosoftCommonTargets>C:\USERS\LUIS\APPDATA\LOCAL\MICROSOFT\VISUALSTUDIO\15.0_CE2DBD57\EXTENSIONS\hhrsyek5.3pu\tmcc\RevDeBug.ImportAfter.targets</CustomAfterMicrosoftCommonTargets>
+    <RevDeBugActive>false</RevDeBugActive>
+    <RevDeBugMetadataPath>C:\Users\Luis\Documents\RevDeBug\Bitfresh\Metadata\\</RevDeBugMetadataPath>
+    <UseRevDeBugOnThisProject>false</UseRevDeBugOnThisProject>
+    <RevDeBugStateStorageType>
+    </RevDeBugStateStorageType>
+    <isNetCore>true</isNetCore>
+    <RecorderAddress />
+    <RecorderTCPPort />
+  </PropertyGroup>
+</Project>

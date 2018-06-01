@@ -1,0 +1,12 @@
+C:\Users\Luis\source\repos\Bitfresh\Bitfresh_Core\bin\Release\netstandard2.0\Bitfresh_Core.deps.json
+C:\Users\Luis\source\repos\Bitfresh\Bitfresh_Core\bin\Release\netstandard2.0\Bitfresh_Core.dll
+C:\Users\Luis\source\repos\Bitfresh\Bitfresh_Core\bin\Release\netstandard2.0\Bitfresh_Core.pdb
+C:\Users\Luis\source\repos\Bitfresh\Bitfresh_Core\bin\Release\netstandard2.0\BittrexSharp.dll
+C:\Users\Luis\source\repos\Bitfresh\Bitfresh_Core\bin\Release\netstandard2.0\BittrexSharp.pdb
+C:\Users\Luis\source\repos\Bitfresh\Bitfresh_Core\obj\Release\netstandard2.0\Bitfresh_Core.csprojAssemblyReference.cache
+C:\Users\Luis\source\repos\Bitfresh\Bitfresh_Core\obj\Release\netstandard2.0\Bitfresh_Core.csproj.CoreCompileInputs.cache
+C:\Users\Luis\source\repos\Bitfresh\Bitfresh_Core\obj\Release\netstandard2.0\Bitfresh_Core.AssemblyInfoInputs.cache
+C:\Users\Luis\source\repos\Bitfresh\Bitfresh_Core\obj\Release\netstandard2.0\Bitfresh_Core.AssemblyInfo.cs
+C:\Users\Luis\source\repos\Bitfresh\Bitfresh_Core\obj\Release\netstandard2.0\Bitfresh_Core.csproj.CopyComplete
+C:\Users\Luis\source\repos\Bitfresh\Bitfresh_Core\obj\Release\netstandard2.0\Bitfresh_Core.dll
+C:\Users\Luis\source\repos\Bitfresh\Bitfresh_Core\obj\Release\netstandard2.0\Bitfresh_Core.pdb
