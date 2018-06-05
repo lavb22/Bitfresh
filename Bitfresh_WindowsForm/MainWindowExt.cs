@@ -189,7 +189,7 @@ namespace Bitfresh_WindowsForm
                 }
 
                 tempIDs.Clear();
-                System.Threading.Thread.Sleep(500);
+                System.Threading.Thread.Sleep(Constants.second);
             }
 
             refcontrol.BeginInvoke((MethodInvoker)delegate ()

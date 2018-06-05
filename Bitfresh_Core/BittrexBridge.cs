@@ -121,12 +121,12 @@ namespace Bitfresh_Core
             }
             while (!response.Success);
 
-            cancelOrderAwait.Cancel();
+            if (cancelOrderAwait != null) cancelOrderAwait.Cancel();
 
             while (!ActiveOrders.Exists(x => x.OrderUuid == response.Result.Uuid))
             {
                 await Task.Delay(5 * Constants.second);
-                cancelOrderAwait.Cancel();
+                if (cancelOrderAwait != null) cancelOrderAwait.Cancel();
             }
 
             OnHoldOrders.Remove(orderData);

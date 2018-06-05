@@ -39,8 +39,6 @@ namespace Bitfresh_Core
             ToBackup = new Stack<OpenOrder>();
             ToErase = new List<string>();
 
-            cancelAwait = new CancellationTokenSource();
-
             bkp = new BackupUtility(Bridge.apiKeyStore);
 
             TaskingList = new List<Task>();
@@ -94,6 +92,7 @@ namespace Bitfresh_Core
 
                 try
                 {
+                    cancelAwait = new CancellationTokenSource();
 #if DEBUG
                     await Task.Delay(2 * Constants.minute, cancelAwait.Token); //Every 2 minutes
 #else
@@ -102,6 +101,11 @@ namespace Bitfresh_Core
                 }
                 catch (TaskCanceledException)
                 {
+                    await Task.Delay(10 * Constants.second);
+                }
+                catch (Exception) //This should never happen
+                {
+                    Status.STATUS = "Unknown Error";
                     await Task.Delay(10 * Constants.second);
                 }
             }
