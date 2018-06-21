@@ -1,4 +1,4 @@
-# Bitfresh V1.1.0
+# BitFresh V1.1.0
 A program to recreate your orders on Bittrex before their 28 day expiration.
 
 Works with BittrexSharp Library to do REST requests.
