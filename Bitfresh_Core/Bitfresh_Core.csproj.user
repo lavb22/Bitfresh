@@ -2,10 +2,10 @@
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <MvcRazorCompileOnPublish>false</MvcRazorCompileOnPublish>
-    <RevDeBugCompilerPath>C:\USERS\LUIS\APPDATA\LOCAL\MICROSOFT\VISUALSTUDIO\15.0_CE2DBD57\EXTENSIONS\hhrsyek5.3pu\tmcc\</RevDeBugCompilerPath>
-    <CustomAfterMicrosoftCommonTargets>C:\USERS\LUIS\APPDATA\LOCAL\MICROSOFT\VISUALSTUDIO\15.0_CE2DBD57\EXTENSIONS\hhrsyek5.3pu\tmcc\RevDeBug.ImportAfter.targets</CustomAfterMicrosoftCommonTargets>
+    <RevDeBugCompilerPath>C:\Users\Administrator\AppData\Local\Microsoft\VisualStudio\15.0_4d9fd311\Extensions\jzhqqmca.m4y\tmcc\</RevDeBugCompilerPath>
+    <CustomAfterMicrosoftCommonTargets>C:\Users\Administrator\AppData\Local\Microsoft\VisualStudio\15.0_4d9fd311\Extensions\jzhqqmca.m4y\tmcc\RevDeBug.ImportAfter.targets</CustomAfterMicrosoftCommonTargets>
     <RevDeBugActive>false</RevDeBugActive>
-    <RevDeBugMetadataPath>C:\Users\Luis\Documents\RevDeBug\Bitfresh\Metadata\\</RevDeBugMetadataPath>
+    <RevDeBugMetadataPath>C:\Users\Administrator\Documents\RevDeBug\Bitfresh\Metadata\\</RevDeBugMetadataPath>
     <UseRevDeBugOnThisProject>false</UseRevDeBugOnThisProject>
     <RevDeBugStateStorageType>
     </RevDeBugStateStorageType>

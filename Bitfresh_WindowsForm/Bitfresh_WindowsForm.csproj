@@ -55,7 +55,7 @@
     <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>7B6EFE3C4902CEFC13FFE3CEF9853C165EF53708</ManifestCertificateThumbprint>
@@ -291,10 +291,7 @@ exit  22
 :BuildEventSuccess</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>powershell.exe -noprofile -ExecutionPolicy Bypass  -File $(ProjectDir)\script\pre-build.ps1 $(ProjectDir)
-if %25errorlevel%25==0 (goto BuildEventSuccess)
-echo Pre-Build script FAILED
-exit  22
-:BuildEventSuccess</PreBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
 </Project>
