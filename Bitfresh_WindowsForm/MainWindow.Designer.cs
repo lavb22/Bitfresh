@@ -219,7 +219,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "MainWindow";
-            this.Text = "Bitfresh V1.1.0";
+            this.Text = "BitFresh V1.1.0";
             ((System.ComponentModel.ISupportInitialize)(this.OrdersView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderListBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainWindowBindingSource)).EndInit();

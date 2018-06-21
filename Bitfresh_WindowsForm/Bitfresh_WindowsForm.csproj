@@ -7,7 +7,7 @@
     <ProjectGuid>{2E073781-0367-4085-B11E-C6FE5BD69B5C}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Bitfresh_WindowsForm</RootNamespace>
-    <AssemblyName>Bitfresh</AssemblyName>
+    <AssemblyName>BitFresh</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -26,7 +26,7 @@
     <ProductName>Bitfresh</ProductName>
     <PublisherName>Luis Valles</PublisherName>
     <SuiteName>Bitfresh</SuiteName>
-    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationRevision>1</ApplicationRevision>
     <ApplicationVersion>1.1.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -55,7 +55,7 @@
     <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>false</SignManifests>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>7B6EFE3C4902CEFC13FFE3CEF9853C165EF53708</ManifestCertificateThumbprint>
@@ -243,6 +243,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="script\post-build.ps1" />
+    <None Include="script\pre-build.ps1" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -290,7 +291,10 @@ exit  22
 :BuildEventSuccess</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>
-    </PreBuildEvent>
+    <PreBuildEvent>powershell.exe -noprofile -ExecutionPolicy Bypass  -File $(ProjectDir)\script\pre-build.ps1 $(ProjectDir)
+if %25errorlevel%25==0 (goto BuildEventSuccess)
+echo Pre-Build script FAILED
+exit  22
+:BuildEventSuccess</PreBuildEvent>
   </PropertyGroup>
 </Project>

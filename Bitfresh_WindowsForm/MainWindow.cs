@@ -79,8 +79,8 @@ namespace Bitfresh_WindowsForm
                 AppNotifyIcon.Visible = true;
                 AppNotifyIcon.DoubleClick += OnDoubleClickNotify;
                 AppNotifyIcon.ContextMenu = NotifyMenu;
-                AppNotifyIcon.BalloonTipText = "Bitfresh is minimized to system tray";
-                AppNotifyIcon.Text = "Bitfresh";
+                AppNotifyIcon.BalloonTipText = "BitFresh is minimized to system tray";
+                AppNotifyIcon.Text = "BitFresh";
             }
 
             //Add Icon to Window
