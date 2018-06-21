@@ -11,7 +11,7 @@ For every 0.2 BTC we will continue development for an extra month. We will be up
 
 ## Donations:
 
-If you want to support our Bitfresh project, please leave a bitcoin donation. We are open to suggestions on improving the software, but need your donations to pay for the development costs.
+If you want to support our BitFresh project, please leave a bitcoin donation. We are open to suggestions on improving the software, but need your donations to pay for the development costs.
 
 ![Image](https://pandoraswallet.com/addressinfo/DonationAddressQR.png)
 
